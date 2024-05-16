@@ -9,7 +9,7 @@ import { lineNumbers, highlightActiveLineGutter, highlightSpecialChars, drawSele
 import { oneDark } from "@codemirror/theme-one-dark";
 
 // Language
-import { javascript } from "@codemirror/lang-javascript";
+import { sql, PostgreSQL } from "@codemirror/lang-sql";
 
 function createEditorState(initialContents, options = {}) {
     let extensions = [
@@ -37,7 +37,7 @@ function createEditorState(initialContents, options = {}) {
             ...foldKeymap,
             ...completionKeymap,
         ]),
-        javascript(),
+        sql({dialect:PostgreSQL,upperCaseKeywords:true}),
         syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
     ];
 
